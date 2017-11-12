@@ -40,6 +40,7 @@ RUN curl -sL https://deb.nodesource.com/setup_7.x | bash -
 # Install SSH Server
 # Install Apache
 # Install PHP
+# Install Python
 RUN apt-get update && apt-get install -y \
 zsh \
 git \
@@ -67,6 +68,8 @@ php7.0-mcrypt \
 php7.0-curl \
 php7.0-zip \
 php7.0-bz2 \
+python3-pip \
+python-dev \
 telnet \
 unzip \
 nodejs
@@ -119,6 +122,15 @@ RUN sed -ie 's/memory_limit\ =\ 128M/memory_limit\ =\ 2G/g' /etc/php/7.0/apache2
 RUN sed -ie 's/\;date\.timezone\ =/date\.timezone\ =\ Europe\/Paris/g' /etc/php/7.0/apache2/php.ini
 RUN sed -ie 's/upload_max_filesize\ =\ 2M/upload_max_filesize\ =\ 200M/g' /etc/php/7.0/apache2/php.ini
 RUN sed -ie 's/post_max_size\ =\ 8M/post_max_size\ =\ 200M/g' /etc/php/7.0/apache2/php.ini
+
+# Update Python's pip
+RUN pip install -U pip
+
+# Install Python packages
+# latest ipython 6 works only with Python >= 3.4. Ok, but needs configuration switcher. Later.
+RUN pip install \
+    ipython==5
+    ipdb
 
 # Install composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
