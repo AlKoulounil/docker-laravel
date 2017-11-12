@@ -129,8 +129,10 @@ RUN pip install -U pip
 # Install Python packages
 # latest ipython 6 works only with Python >= 3.4. Ok, but needs configuration switcher. Later.
 RUN pip install \
-    ipython==5
-    ipdb
+    ipython==5 \
+    ipdb \
+    pymysql \
+    peewee
 
 # Install composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
