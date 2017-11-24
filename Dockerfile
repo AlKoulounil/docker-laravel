@@ -130,7 +130,7 @@ RUN pip install -U pip
 # latest ipython 6 works only with Python >= 3.4. Ok, but needs configuration switcher. Later.
 RUN pip install \
     ipython==5 \
-    ipdb \
+    ipdb==0.8 \
     pymysql \
     peewee
 
