@@ -7,7 +7,7 @@ service ssh start
 service mysql start
 
 # Regrant access to debian user
-# mysql -s -u root -e "GRANT ALL PRIVILEGES ON *.* TO 'debian-sys-maint'@'localhost' IDENTIFIED BY 'X0dRgHfyx3OyAL5h';"
+mysql -s -u root -e "GRANT ALL PRIVILEGES ON *.* TO 'debian-sys-maint'@'localhost' IDENTIFIED BY 'X0dRgHfyx3OyAL5h';"
 
 # Create database and user if not exists
 if ! mysql -s -u root -e 'use laravel' 2>/dev/null; then
@@ -30,4 +30,3 @@ maildev > /dev/null 2>&1 &
 
 # Gime gime gime a shell after midnight
 zsh
-

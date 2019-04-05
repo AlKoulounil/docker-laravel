@@ -41,39 +41,39 @@ RUN curl -sL https://deb.nodesource.com/setup_7.x | bash -
 # Install Apache
 # Install PHP
 # Install Python
-RUN apt-get update && apt-get install -y \
-zsh \
-git \
-vim \
-htop \
-vim \
-htop \
-mysql-server \
-redis-server \
-supervisor \
-openssh-server \
-apache2 \
-apache2-bin \
-apache2-data \
-apache2-utils \
-php7.0 \
-php7.0-apcu \
-php7.0-mysql \
-php7.0-redis \
-php7.0-mbstring \
-php7.0-opcache \
-php7.0-xml \
-php7.0-xdebug \
-php7.0-mcrypt \
-php7.0-curl \
-php7.0-zip \
-php7.0-bz2 \
-python-pip \
-python-dev \
-telnet \
-unzip \
-nodejs
-
+RUN apt-get update 
+RUN apt-get install -y zsh
+RUN apt-get install -y git
+RUN apt-get install -y vim
+RUN apt-get install -y htop
+RUN apt-get install -y vim
+RUN apt-get install -y htop
+RUN apt-get install -y mysql-server
+RUN apt-get install -y redis-server
+RUN apt-get install -y supervisor
+RUN apt-get install -y openssh-server
+RUN apt-get install -y apache2
+RUN apt-get install -y apache2-bin
+RUN apt-get install -y apache2-data
+RUN apt-get install -y apache2-utils
+RUN apt-get install -y php7.0
+RUN apt-get install -y php7.0-apcu
+RUN apt-get install -y php7.0-mysql
+RUN apt-get install -y php7.0-redis
+RUN apt-get install -y php7.0-mbstring
+RUN apt-get install -y php7.0-opcache
+RUN apt-get install -y php7.0-xml
+RUN apt-get install -y php7.0-xdebug
+RUN apt-get install -y php7.0-mcrypt
+RUN apt-get install -y php7.0-curl
+RUN apt-get install -y php7.0-zip
+RUN apt-get install -y php7.0-bz2
+RUN apt-get install -y python-pip
+RUN apt-get install -y python-dev
+RUN apt-get install -y telnet
+RUN apt-get install -y unzip
+RUN apt-get install -y nodejs
+RUN apt-get install -y unoconv
 
 # Run oh my zsh
 RUN wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh || true
@@ -147,7 +147,7 @@ ADD files/ngrok /usr/local/bin/ngrok
 RUN chmod +x /usr/local/bin/ngrok
 
 # Install PHPMyAdmin
-RUN cd /var/www/html; git clone --depth=1 https://github.com/phpmyadmin/phpmyadmin.git;
+RUN cd /var/www/html; git clone --depth=1 https://github.com/phpmyadmin/phpmyadmin.git --branch RELEASE_4_8_0_1;
 RUN cd /var/www/html/phpmyadmin; composer install
 ADD config/phpmyadmin/config.inc.php /var/www/html/phpmyadmin/config.inc.php
 
