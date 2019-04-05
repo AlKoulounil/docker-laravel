@@ -2,6 +2,7 @@
 
 cd /app
 
+rm app/package.json
 ln -s /mounted/package.json /app/package.json
 
 cp /mounted/webpack.mix.js /app/webpack.mix.js
@@ -10,7 +11,6 @@ ln -s /mounted/.env /app/.env
 ln -s /mounted/app /app/app
 ln -s /mounted/artisan /app/artisan
 ln -s /mounted/bootstrap /app/bootstrap
-rm app/composer.json
 ln -s /mounted/composer.json /app/composer.json
 ln -s /mounted/composer.lock /app/composer.lock
 ln -s /mounted/config /app/config
@@ -57,6 +57,8 @@ chmod -R 755 /var/log/apache2
 
 # Start Maildev
 maildev > /dev/null 2>&1 &
+
+npm update
 
 # Gime gime gime a shell after midnight
 zsh
