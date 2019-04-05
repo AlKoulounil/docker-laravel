@@ -187,6 +187,7 @@ WORKDIR /app
 
 ADD files/package.json /app/package.json
 ADD files/rebuild_nodejs.sh /app/rebuild_nodejs.sh
+RUN chmod +x /app/rebuild_nodejs.sh
 
 RUN npm install
 
