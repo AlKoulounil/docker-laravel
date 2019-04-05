@@ -1,5 +1,35 @@
 #!/bin/zsh
 
+cd /app
+
+ln -s /mounted/package.json /app/package.json
+
+cp /mounted/webpack.mix.js /app/webpack.mix.js
+
+ln -s /mounted/.env /app/.env
+ln -s /mounted/app /app/app
+ln -s /mounted/artisan /app/artisan
+ln -s /mounted/bootstrap /app/bootstrap
+rm app/composer.json
+ln -s /mounted/composer.json /app/composer.json
+ln -s /mounted/composer.lock /app/composer.lock
+ln -s /mounted/config /app/config
+ln -s /mounted/database /app/database
+ln -s /mounted/other /app/other
+ln -s /mounted/phpunit.xml /app/phpunit.xml
+ln -s /mounted/public /app/public
+ln -s /mounted/readme.md /app/readme.md
+ln -s /mounted/routes /app/routes
+ln -s /mounted/server.php /app/server.php
+ln -s /mounted/storage /app/storage
+ln -s /mounted/tests /app/tests
+ln -s /mounted/vendor /app/vendor
+
+chmod -R 777 /app/storage/logs/
+chmod -R 777 /app/storage/framework/views
+
+/app/rebuild_nodejs.sh
+
 # Start SSH
 service ssh start
 
