@@ -178,6 +178,10 @@ RUN chsh -s /bin/zsh root
 EXPOSE 22
 EXPOSE 80
 
+#Install libpng
+RUN apt-get update && apt-get install libpng-dev -y
+RUN wget -q -O /tmp/libpng12.deb http://mirrors.kernel.org/ubuntu/pool/main/libp/libpng/libpng12-0_1.2.54-1ubuntu1_amd64.deb && dpkg -i /tmp/libpng12.deb && rm /tmp/libpng12.deb
+
 # Link Laravel App
 RUN mkdir /app
 WORKDIR /app
